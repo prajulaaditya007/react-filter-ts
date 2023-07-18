@@ -1,0 +1,137 @@
+/* App.css */
+
+/* Center the ProductTable component */
+.App {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+/* ProductTable.css */
+
+/* Add some margin and padding to the container */
+.container {
+  margin: 20px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+/* Style the input fields and typeahead components */
+.input-field {
+  margin: 10px 0;
+}
+
+.typeahead-container {
+  position: relative;
+  width: 300px;
+}
+
+.typeahead-container input[type="text"] {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+.typeahead-container .rbt-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 1000;
+  width: 100%;
+  padding: 10px 0;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-top: none;
+  border-radius: 0 0 4px 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.typeahead-container .rbt-menu .rbt-menu-item {
+  padding: 10px;
+  cursor: pointer;
+}
+
+.typeahead-container .rbt-menu .rbt-menu-item:hover,
+.typeahead-container .rbt-menu .rbt-menu-item:focus {
+  background-color: #f5f5f5;
+}
+
+/* Style the date picker components */
+.datepicker-container {
+  margin: 10px 0;
+}
+
+.react-datepicker {
+  font-size: 14px;
+}
+
+.react-datepicker__input-container input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+/* Style the table */
+.table-container {
+  margin-top: 20px;
+}
+
+.rdt_Table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.rdt_TableHead {
+  background-color: #f5f5f5;
+}
+
+.rdt_TableHeadRow,
+.rdt_TableRow {
+  border-bottom: 1px solid #ccc;
+}
+
+.rdt_TableHeadRow:last-child,
+.rdt_TableRow:last-child {
+  border-bottom: none;
+}
+
+.rdt_TableHeadCell,
+.rdt_TableCell {
+  padding: 10px;
+  text-align: left;
+}
+
+.rdt_TableCell:last-child {
+  text-align: right;
+}
+
+/* Style the pagination */
+.pagination {
+  margin-top: 10px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.pagination button {
+  margin-left: 5px;
+  padding: 5px 10px;
+  border: none;
+  background-color: #f5f5f5;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.pagination button:hover {
+  background-color: #ebebeb;
+}
+
+.pagination button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
