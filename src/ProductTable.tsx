@@ -152,48 +152,59 @@ const ProductTable: React.FC = () => {
   return (
     <div>
       <h1>Product Table</h1>
-      <div className="input-field">
-        <Typeahead
-          labelKey="brandName"
-          options={products.map((product) => product.brandName)}
-          placeholder="Select Brand Name"
-          onChange={handleBrandNameChange}
-        />
+      <div className="typeahead-container">
+        <div className="input-field">
+          <Typeahead
+            labelKey="brandName"
+            options={products.map((product) => product.brandName)}
+            placeholder="Select Brand Name"
+            onChange={handleBrandNameChange}
+          />
+        </div>
+        <div className="input-field">
+          <Typeahead
+            labelKey="brandType"
+            options={products.map((product) => product.brandType)}
+            placeholder="Select Brand Type"
+            onChange={handleBrandTypeChange}
+          />
+        </div>
+        <div className="input-field">
+          <Typeahead
+            labelKey="uniqueHashKey"
+            options={products.map((product) => product.uniqueHashKey)}
+            placeholder="Select Unique Hash Key"
+            onChange={handleUniqueHashKeyChange}
+          />
+        </div>
       </div>
 
-      <div className="input-field">
-        <Typeahead
-          labelKey="brandType"
-          options={products.map((product) => product.brandType)}
-          placeholder="Select Brand Type"
-          onChange={handleBrandTypeChange}
+      <div className="datepicker-container">
+        <DatePicker
+          selected={
+            typeof dateProductArrived === "string"
+              ? null
+              : (dateProductArrived as Date)
+          } // Cast to Date
+          placeholderText="Select Arrival Date"
+          onChange={(date) => setDateProductArrived(date)}
+          dateFormat="yyyy-MM-dd"
+          isClearable
         />
       </div>
-
-      <div className="input-field">
-        <Typeahead
-          labelKey="uniqueHashKey"
-          options={products.map((product) => product.uniqueHashKey)}
-          placeholder="Select Unique Hash Key"
-          onChange={handleUniqueHashKeyChange}
+      <div className="datepicker-container">
+        <DatePicker
+          selected={
+            typeof dateProductSold === "string"
+              ? null
+              : (dateProductSold as Date)
+          } // Cast to Date
+          placeholderText="Select Sold Date"
+          onChange={(date) => setDateProductSold(date)}
+          dateFormat="yyyy-MM-dd"
+          isClearable
         />
       </div>
-
-      <DatePicker
-        selected={dateProductArrived}
-        placeholderText="Select Arrival Date"
-        onChange={(date) => setDateProductArrived(date)}
-        dateFormat="yyyy-MM-dd"
-        isClearable
-      />
-
-      <DatePicker
-        selected={dateProductSold}
-        placeholderText="Select Sold Date"
-        onChange={(date) => setDateProductSold(date)}
-        dateFormat="yyyy-MM-dd"
-        isClearable
-      />
 
       <DataTable columns={columns} data={filteredProducts} />
     </div>
