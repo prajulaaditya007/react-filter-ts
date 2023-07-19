@@ -77,17 +77,33 @@ const ProductTable: React.FC = () => {
   const columns = [
     {
       name: "Brand Name",
-      selector: "brandName",
+      selector: (row: any) => row.brandName,
       sortable: true,
     },
     {
       name: "Brand Type",
-      selector: "brandType",
+      selector: (row: any) => row.brandType,
       sortable: true,
     },
     {
+      name: "Unique Hash Key",
+      selector: (row: any) => row.uniqueHashKey,
+      sortable: true,
+    },
+    {
+      name: "Number of Products Sold",
+      selector: (row: any) => row.numberOfProductSold,
+      sortable: true,
+    },
+    {
+      name: "Profit Margin",
+      selector: (row: any) => row.profitMargin,
+      sortable: true,
+      cell: (row: Product) => (row.profitMargin * 100).toFixed(2) + "%",
+    },
+    {
       name: "Arrival Date",
-      selector: "dateProductArrived",
+      selector: (row: any) => row.dateProductArrived,
       sortable: true,
       cell: (row: Product) =>
         row.dateProductArrived
@@ -96,26 +112,10 @@ const ProductTable: React.FC = () => {
     },
     {
       name: "Sold Date",
-      selector: "dateProductSold",
+      selector: (row: any) => row.dateProductSold,
       sortable: true,
       cell: (row: Product) =>
         row.dateProductSold ? row.dateProductSold.toString().split("T")[0] : "",
-    },
-    {
-      name: "Unique Hash Key",
-      selector: "uniqueHashKey",
-      sortable: true,
-    },
-    {
-      name: "Number of Products Sold",
-      selector: "numberOfProductSold",
-      sortable: true,
-    },
-    {
-      name: "Profit Margin",
-      selector: "profitMargin",
-      sortable: true,
-      cell: (row: Product) => (row.profitMargin * 100).toFixed(2) + "%",
     },
   ];
 
@@ -150,10 +150,11 @@ const ProductTable: React.FC = () => {
   };
 
   return (
-    <div>
+    <div className="container">
       <h1>Product Table</h1>
       <div className="typeahead-container">
         <div className="input-field">
+          <label>Brand Name</label>
           <Typeahead
             labelKey="brandName"
             options={products.map((product) => product.brandName)}
@@ -162,6 +163,7 @@ const ProductTable: React.FC = () => {
           />
         </div>
         <div className="input-field">
+          <label>Brand Type</label>
           <Typeahead
             labelKey="brandType"
             options={products.map((product) => product.brandType)}
@@ -170,6 +172,7 @@ const ProductTable: React.FC = () => {
           />
         </div>
         <div className="input-field">
+          <label>Unique Hash Key</label>
           <Typeahead
             labelKey="uniqueHashKey"
             options={products.map((product) => product.uniqueHashKey)}
@@ -180,6 +183,7 @@ const ProductTable: React.FC = () => {
       </div>
 
       <div className="datepicker-container">
+        <div>Start Date</div>
         <DatePicker
           selected={
             typeof dateProductArrived === "string"
@@ -193,6 +197,7 @@ const ProductTable: React.FC = () => {
         />
       </div>
       <div className="datepicker-container">
+        <div>End Date</div>
         <DatePicker
           selected={
             typeof dateProductSold === "string"
